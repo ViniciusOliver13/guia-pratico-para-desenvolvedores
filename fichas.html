@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fichas de Diretrizes – Guia Prático da LGPD</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<div class="layout">
+<aside class="indice" id="indice">
+<p class="indice-titulo"><a href="index.html">Guia Prático de Diretrizes da LGPD para Desenvolvedores</a></p>
+<nav aria-label="Índice"><p class="indice-cab">Índice</p>
+<ol><li><a href="index.html#apresentacao">1. Apresentação</a></li><li><a href="index.html#como-usar">2. Como Usar</a><ol><li><a href="index.html#ordem-de-uso">2.1 Ordem de uso</a></li><li><a href="index.html#como-ler">2.2 Como ler uma ficha</a></li><li><a href="index.html#formas">2.3 Formas de verificação</a></li><li><a href="index.html#condicionais">2.4 Diretrizes condicionais</a></li></ol></li><li><a href="preparacao.html">3. Etapa de Preparação</a></li><li><a href="fichas.html" aria-current="page">4. Fichas de Diretrizes</a><details class="ids-det"><summary>Fichas por ID</summary><ul><li class="grupo-et"><span>Requisitos</span><ul class="ids"><li><a href="fichas.html#REQ-01">REQ-01</a></li><li><a href="fichas.html#REQ-02">REQ-02</a></li><li><a href="fichas.html#REQ-03">REQ-03</a></li><li><a href="fichas.html#REQ-04">REQ-04</a></li></ul></li><li class="grupo-et"><span>Arquitetura</span><ul class="ids"><li><a href="fichas.html#ARQ-01">ARQ-01</a></li><li><a href="fichas.html#ARQ-02">ARQ-02</a></li><li><a href="fichas.html#ARQ-03">ARQ-03</a></li><li><a href="fichas.html#ARQ-04">ARQ-04</a></li><li><a href="fichas.html#ARQ-05">ARQ-05</a></li><li><a href="fichas.html#ARQ-06">ARQ-06</a></li><li><a href="fichas.html#ARQ-07">ARQ-07</a></li><li><a href="fichas.html#ARQ-08">ARQ-08</a></li><li><a href="fichas.html#ARQ-09">ARQ-09</a></li><li><a href="fichas.html#ARQ-10">ARQ-10</a></li><li><a href="fichas.html#ARQ-11">ARQ-11</a></li><li><a href="fichas.html#ARQ-12">ARQ-12</a></li><li><a href="fichas.html#ARQ-13">ARQ-13</a></li></ul></li><li class="grupo-et"><span>Implementação</span><ul class="ids"><li><a href="fichas.html#IMP-01">IMP-01</a></li><li><a href="fichas.html#IMP-02">IMP-02</a></li><li><a href="fichas.html#IMP-03">IMP-03</a></li><li><a href="fichas.html#IMP-04">IMP-04</a></li><li><a href="fichas.html#IMP-05">IMP-05</a></li><li><a href="fichas.html#IMP-06">IMP-06</a></li><li><a href="fichas.html#IMP-07">IMP-07</a></li><li><a href="fichas.html#IMP-08">IMP-08</a></li><li><a href="fichas.html#IMP-09">IMP-09</a></li><li><a href="fichas.html#IMP-10">IMP-10</a></li><li><a href="fichas.html#IMP-11">IMP-11</a></li><li><a href="fichas.html#IMP-12">IMP-12</a></li></ul></li><li class="grupo-et"><span>Nuvem</span><ul class="ids"><li><a href="fichas.html#NUV-01">NUV-01</a></li></ul></li></ul></details></li><li><a href="checklist.html">Checklist</a></li><li><a href="fontes.html">6. Fontes e Limites</a><ol><li><a href="fontes.html#fontes">6.1 Fontes</a></li><li><a href="fontes.html#limites">6.2 Limites</a></li></ol></li><li><a href="referencias.html">7. Referências</a></li></ol>
+</nav>
+</aside>
+<div class="coluna">
+<button type="button" class="indice-botao" id="indice-botao" aria-controls="indice" aria-expanded="false" hidden>Índice</button>
+<main id="conteudo">
+<h1>4. Fichas de Diretrizes</h1>
+<div class="ferramentas" role="search">
+<div class="campo-busca"><label class="so-leitor" for="busca">Buscar nas fichas</label><input id="busca" type="search" placeholder="Buscar nas fichas" autocomplete="off"></div>
+<label class="so-leitor" for="f-etapa">Etapa</label><select id="f-etapa"><option value="">Todas as etapas</option><option value="Requisitos">Requisitos</option><option value="Arquitetura">Arquitetura</option><option value="Implementação">Implementação</option><option value="Nuvem">Nuvem</option></select>
+<label class="so-leitor" for="f-forma">Forma de verificação</label><select id="f-forma"><option value="">Todas as formas</option><option value="Código">Código</option><option value="Repositório">Repositório</option><option value="Banco de dados">Banco de dados</option><option value="Configuração">Configuração</option><option value="Infraestrutura">Infraestrutura</option><option value="Documento">Documento</option></select>
+<span class="chip"><input id="f-cond" type="checkbox"><label for="f-cond">Condicionais</label></span>
+<span class="acoes"><button type="button" id="limpar-filtros">Limpar</button><button type="button" id="abrir-todas">Abrir todas</button><button type="button" id="fechar-todas">Fechar todas</button></span>
+<p id="contagem" class="contagem" aria-live="polite"></p>
+</div>
+<noscript><p class="aviso">Esta página precisa de JavaScript para listar as fichas.</p></noscript>
+<div id="lista-fichas"></div>
+</main>
+<footer class="rodape">
+<p>Versão avaliada no TCC (texto de 28/10/2026)</p>
+<p>Autor: Antonio Vinícius</p>
+</footer>
+</div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>

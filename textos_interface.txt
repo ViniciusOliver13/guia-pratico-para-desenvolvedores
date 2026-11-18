@@ -1,0 +1,38 @@
+Guia Prático de Diretrizes da LGPD para Desenvolvedores
+Versão avaliada no TCC (texto de 28/10/2026, sem os ajustes posteriores)
+Conteúdo extraído do PDF do guia e conferido automaticamente contra ele. As seções de texto (Apresentação, Como usar, Formas de verificação, Etapa de Preparação, Fontes e limites, Referências) devem ser copiadas do PDF.
+Requisitos
+Arquitetura
+Implementação
+Nuvem
+Versão avaliada no TCC (texto de 28/10/2026)
+Fontes e limites – Guia Prático da LGPD
+Referências – Guia Prático da LGPD
+Etapa de Preparação – Guia Prático da LGPD
+Fichas de Diretrizes – Guia Prático da LGPD
+Checklist – Guia Prático da LGPD
+Passos da Etapa de Preparação
+Ir para o conteúdo
+Buscar nas fichas
+Forma de verificação
+Somente diretrizes condicionais
+Limpar filtros
+Abrir todas
+Fechar todas
+Esta página precisa de JavaScript para listar as fichas.
+Esta página precisa de JavaScript para listar os itens.
+Marque cada item como atende, não atende ou não se aplica. As marcações ficam apenas neste navegador.
+Baixar CSV
+Limpar marcações
+Não foi possível carregar os dados das fichas. Abra o site pelo endereço publicado ou por um servidor local (por exemplo, python3 -m http.server).
+Limpar todas as marcações?
+Marcados: de
+Autor: Antonio Vinícius
+Índice
+Fichas por ID
+Guia Prático de Diretrizes da LGPD para Desenvolvedores
+Checklist
+Todas as etapas
+Todas as formas
+Condicionais
+Limpar

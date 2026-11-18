@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fontes e limites – Guia Prático da LGPD</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<div class="layout">
+<aside class="indice" id="indice">
+<p class="indice-titulo"><a href="index.html">Guia Prático de Diretrizes da LGPD para Desenvolvedores</a></p>
+<nav aria-label="Índice"><p class="indice-cab">Índice</p>
+<ol><li><a href="index.html#apresentacao">1. Apresentação</a></li><li><a href="index.html#como-usar">2. Como Usar</a><ol><li><a href="index.html#ordem-de-uso">2.1 Ordem de uso</a></li><li><a href="index.html#como-ler">2.2 Como ler uma ficha</a></li><li><a href="index.html#formas">2.3 Formas de verificação</a></li><li><a href="index.html#condicionais">2.4 Diretrizes condicionais</a></li></ol></li><li><a href="preparacao.html">3. Etapa de Preparação</a></li><li><a href="fichas.html">4. Fichas de Diretrizes</a><details class="ids-det"><summary>Fichas por ID</summary><ul><li class="grupo-et"><span>Requisitos</span><ul class="ids"><li><a href="fichas.html#REQ-01">REQ-01</a></li><li><a href="fichas.html#REQ-02">REQ-02</a></li><li><a href="fichas.html#REQ-03">REQ-03</a></li><li><a href="fichas.html#REQ-04">REQ-04</a></li></ul></li><li class="grupo-et"><span>Arquitetura</span><ul class="ids"><li><a href="fichas.html#ARQ-01">ARQ-01</a></li><li><a href="fichas.html#ARQ-02">ARQ-02</a></li><li><a href="fichas.html#ARQ-03">ARQ-03</a></li><li><a href="fichas.html#ARQ-04">ARQ-04</a></li><li><a href="fichas.html#ARQ-05">ARQ-05</a></li><li><a href="fichas.html#ARQ-06">ARQ-06</a></li><li><a href="fichas.html#ARQ-07">ARQ-07</a></li><li><a href="fichas.html#ARQ-08">ARQ-08</a></li><li><a href="fichas.html#ARQ-09">ARQ-09</a></li><li><a href="fichas.html#ARQ-10">ARQ-10</a></li><li><a href="fichas.html#ARQ-11">ARQ-11</a></li><li><a href="fichas.html#ARQ-12">ARQ-12</a></li><li><a href="fichas.html#ARQ-13">ARQ-13</a></li></ul></li><li class="grupo-et"><span>Implementação</span><ul class="ids"><li><a href="fichas.html#IMP-01">IMP-01</a></li><li><a href="fichas.html#IMP-02">IMP-02</a></li><li><a href="fichas.html#IMP-03">IMP-03</a></li><li><a href="fichas.html#IMP-04">IMP-04</a></li><li><a href="fichas.html#IMP-05">IMP-05</a></li><li><a href="fichas.html#IMP-06">IMP-06</a></li><li><a href="fichas.html#IMP-07">IMP-07</a></li><li><a href="fichas.html#IMP-08">IMP-08</a></li><li><a href="fichas.html#IMP-09">IMP-09</a></li><li><a href="fichas.html#IMP-10">IMP-10</a></li><li><a href="fichas.html#IMP-11">IMP-11</a></li><li><a href="fichas.html#IMP-12">IMP-12</a></li></ul></li><li class="grupo-et"><span>Nuvem</span><ul class="ids"><li><a href="fichas.html#NUV-01">NUV-01</a></li></ul></li></ul></details></li><li><a href="checklist.html">Checklist</a></li><li><a href="fontes.html" aria-current="page">6. Fontes e Limites</a><ol><li><a href="fontes.html#fontes">6.1 Fontes</a></li><li><a href="fontes.html#limites">6.2 Limites</a></li></ol></li><li><a href="referencias.html">7. Referências</a></li></ol>
+</nav>
+</aside>
+<div class="coluna">
+<button type="button" class="indice-botao" id="indice-botao" aria-controls="indice" aria-expanded="false" hidden>Índice</button>
+<main id="conteudo">
+<h1>6. Fontes e Limites</h1>
+<h2 id="fontes">6.1 Fontes</h2>
+<p>As diretrizes se apoiam em fontes de quatro tipos, indicados na tabela de referências de cada ficha:</p>
+<table><caption class="so-leitor">Tipos de fonte</caption><thead><tr><th scope="col">Tipo</th><th scope="col">Fontes</th></tr></thead><tbody><tr><th scope="row">Lei</th><td>Lei nº 13.709/2018 (LGPD)</td></tr><tr><th scope="row">Norma</th><td>ABNT NBR ISO/IEC 27701:2019 e ABNT NBR ISO/IEC 27002:2013</td></tr><tr><th scope="row">Orientação</th><td>Guia orientativo da ANPD sobre segurança da informação para agentes de tratamento de pequeno porte (2021) e Guia orientativo da ANPD sobre tratamento de dados pessoais pelo Poder Público (versão 2.0, 2023)</td></tr><tr><th scope="row">Guia europeu</th><td>ENISA, Guidelines for SMEs on the security of personal data processing (2016)</td></tr></tbody></table>
+<p>Também foram usados os princípios de Privacy by Design de Cavoukian (2011), como framework, e referências técnicas (OWASP, IETF, W3C e NIST) como sugestão de mecanismos.</p>
+<h2 id='limites'>6.2 Limites</h2>
+<ol><li><strong>Limite técnico.</strong> O guia trata da segurança e da privacidade no sistema, ou seja, do que pode ser implementado e verificado no código, no banco de dados, na configuração, na infraestrutura e nos documentos do projeto. O recorte segue a própria LGPD, que exige medidas de segurança (Art. 46) e sistemas estruturados para atender aos requisitos de segurança e aos princípios gerais da lei (Art. 49), e a ABNT NBR ISO/IEC 27701:2019, que divide seus controles em segurança da informação (seção 6) e privacidade para controladores (seção 7). Ficam fora a governança de dados, as políticas institucionais, a segurança física, a notificação de incidentes (Art. 48) e a transferência internacional de dados.</li><li><strong>Decisões jurídicas.</strong> O guia não decide a base legal, os prazos de retenção nem a licitude de um compartilhamento. Essas decisões são da instituição responsável pelo tratamento. O guia verifica se elas estão registradas e se o sistema as cumpre.</li><li><strong>Fontes de outra origem ou outro público.</strong> O guia de segurança da ANPD foi escrito para agentes de pequeno porte, e o guia da ENISA, para o contexto europeu. Os dois foram usados como orientação técnica, não como obrigação legal.</li><li><strong>Regulamentação em aberto.</strong> A ANPD ainda não publicou os padrões técnicos mínimos previstos no Art. 46, §1º. Quando publicar, as diretrizes deverão ser revistas.</li><li><strong>Avaliação.</strong> A verificação depende da evidência e de quem avalia. A interpretação do rigor pode variar entre avaliadores. Para reduzir esse efeito, cada item exige evidência explícita.</li></ol>
+</main>
+<footer class="rodape">
+<p>Versão avaliada no TCC (texto de 28/10/2026)</p>
+<p>Autor: Antonio Vinícius</p>
+</footer>
+</div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,845 @@
+{
+ "meta": {
+  "titulo": "Guia Prático de Diretrizes da LGPD para Desenvolvedores",
+  "versao": "Versão avaliada no TCC (texto de 28/10/2026, sem os ajustes posteriores)",
+  "observacao": "Conteúdo extraído do PDF do guia e conferido automaticamente contra ele. As seções de texto (Apresentação, Como usar, Formas de verificação, Etapa de Preparação, Fontes e limites, Referências) devem ser copiadas do PDF."
+ },
+ "fichas": [
+  {
+   "id": "REQ-01",
+   "etapa": "Requisitos",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Defina os requisitos de segurança e de privacidade do sistema antes de projetá-lo.",
+   "mecanismo": "requisitos não funcionais de segurança e de privacidade são registrados no artefato de requisitos do projeto, derivados do inventário de dados pessoais da Etapa de Preparação. Um catálogo de requisitos de segurança, como o OWASP ASVS, pode servir de ponto de partida.",
+   "variacoes": "em métodos ágeis, os requisitos entram como itens do backlog ou critérios das histórias de usuário. Em métodos tradicionais, entram como seção do documento de requisitos. Em sistema já em operação, os requisitos são registrados antes da próxima evolução.",
+   "itens": [
+    {
+     "id": "REQ-01.1",
+     "texto": "Há requisitos de segurança documentados antes da codificação."
+    },
+    {
+     "id": "REQ-01.2",
+     "texto": "Há requisitos de privacidade documentados antes da codificação."
+    }
+   ],
+   "forma_verificacao": "Documento",
+   "referencias": {
+    "base": "Art. 46, §2º (lei). ISO 27701 6.11.1 (norma). Cavoukian P1 e P3 (framework). ENISA R.2 (guia europeu).",
+    "referencias_tecnicas": "OWASP Application Security Verification Standard (ASVS)."
+   }
+  },
+  {
+   "id": "REQ-02",
+   "etapa": "Requisitos",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Colete somente os dados pessoais que a finalidade exige.",
+   "mecanismo": "lista de campos por finalidade, ligada ao registro do REQ-04, aplicada nos formulários, nas APIs e no esquema do banco. Opções que coletam dados não essenciais seguem o privacy by default: ficam desabilitadas até o titular escolher. Em APIs, o contrato de entrada (por exemplo, uma especificação OpenAPI) limita os campos aceitos.",
+   "variacoes": "em formulários, a restrição vem da configuração de cada campo, enquanto em integrações, do contrato da API. No setor público, a finalidade está ligada a uma atribuição legal ou a uma política pública, e o caráter obrigatório do serviço não autoriza pedir mais dados do que ela exige.",
+   "itens": [
+    {
+     "id": "REQ-02.1",
+     "texto": "Os formulários e as APIs coletam apenas campos ligados a uma finalidade registrada."
+    },
+    {
+     "id": "REQ-02.2",
+     "texto": "O banco não guarda campo de dado pessoal sem finalidade registrada."
+    },
+    {
+     "id": "REQ-02.3",
+     "texto": "As opções que coletam dado pessoal não essencial vêm desabilitadas por padrão."
+    }
+   ],
+   "forma_verificacao": "Código: 1 e 3. Banco de dados: 2",
+   "referencias": {
+    "base": "Art. 6º, III (lei). ISO 27701 7.4.1 e 7.4.4 (norma). ANPD 44 e ANPD Poder Público, ex. 1 (orientação). ENISA M.2 (guia europeu).",
+    "referencias_tecnicas": "OpenAPI Specification."
+   }
+  },
+  {
+   "id": "REQ-03",
+   "etapa": "Requisitos",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Defina o prazo de retenção de cada categoria de dado pessoal.",
+   "mecanismo": "tabela de retenção com categoria de dado, finalidade, prazo, justificativa do prazo e ação ao fim dele (eliminar ou anonimizar).",
+   "variacoes": "no setor público, os prazos seguem a tabela de temporalidade documental do órgão e as normas de gestão de documentos e arquivos. Guardar o dado além da finalidade por obrigação legal é permitido, mas precisa estar justificado na tabela. No setor privado, os prazos seguem as leis específicas que se aplicam ao negócio.",
+   "itens": [
+    {
+     "id": "REQ-03.1",
+     "texto": "Existe tabela de retenção com prazo para cada categoria de dado pessoal."
+    },
+    {
+     "id": "REQ-03.2",
+     "texto": "Cada prazo cita a norma ou a necessidade que o justifica."
+    },
+    {
+     "id": "REQ-03.3",
+     "texto": "Conflito entre prazo legal e necessidade tem decisão documentada."
+    }
+   ],
+   "forma_verificacao": "Documento",
+   "referencias": {
+    "base": "Art. 15, I e II, e Art. 16, I (lei). ISO 27701 7.4.7 (norma). ANPD 45 e ANPD Poder Público, p. 32 (orientação).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "REQ-04",
+   "etapa": "Requisitos",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Registre a base legal e a finalidade de cada tratamento de dados pessoais.",
+   "mecanismo": "registro das operações de tratamento com finalidade, base legal (Art. 7º, ou Art. 11 para dados sensíveis) e categorias de dados envolvidas, ligado à lista de campos do REQ-02.",
+   "variacoes": "o registro pode ficar no banco, como tabela de finalidades, ou num documento, desde que cada operação seja identificável. A escolha da base legal é do controlador. O desenvolvedor apenas verifica se ela está registrada. No setor público, a base usual é o cumprimento de obrigação legal ou a execução de política pública, e o consentimento só cabe quando o fornecimento do dado não é obrigatório.",
+   "itens": [
+    {
+     "id": "REQ-04.1",
+     "texto": "Cada finalidade de tratamento tem base legal registrada."
+    },
+    {
+     "id": "REQ-04.2",
+     "texto": "Dados sensíveis têm base legal do Art. 11, e não do Art. 7º."
+    },
+    {
+     "id": "REQ-04.3",
+     "texto": "No setor público, nenhum tratamento obrigatório usa o consentimento como base legal."
+    }
+   ],
+   "forma_verificacao": "Banco de dados ou documento: 1. Documento: 2 e 3",
+   "referencias": {
+    "base": "Art. 6º, I, e Arts. 7º, 11, 23 e 37 (lei). ISO 27701 7.2.1, 7.2.2 e 7.2.8 (norma). ANPD Poder Público, pp. 10–21 (orientação).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "ARQ-01",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Restrinja o acesso a dados pessoais por papel, dando a cada perfil só o que ele precisa.",
+   "mecanismo": "controle de acesso baseado em papéis (RBAC), com a permissão verificada no servidor a cada operação. Contas de serviço e do banco seguem o princípio do menor privilégio.",
+   "variacoes": "a verificação pode usar o recurso de autorização do framework adotado (em Java, o Spring Security, e em Python, o sistema de permissões do Django) ou uma camada própria. As permissões das contas do banco são definidas no próprio SGBD.",
+   "itens": [
+    {
+     "id": "ARQ-01.1",
+     "texto": "Existe matriz de papel × permissão para dados pessoais."
+    },
+    {
+     "id": "ARQ-01.2",
+     "texto": "A permissão é verificada no servidor em toda operação com dado pessoal."
+    },
+    {
+     "id": "ARQ-01.3",
+     "texto": "Contas administrativas e de serviço, inclusive a do banco, têm privilégios mínimos e estão listadas."
+    },
+    {
+     "id": "ARQ-01.4",
+     "texto": "As permissões são revisadas periodicamente, com registro."
+    }
+   ],
+   "forma_verificacao": "Documento: 1 e 4. Código: 2. Configuração: 3",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27701 6.6.2.1, 6.6.2.2 e 6.6.4.2 (norma). ANPD 34–39 (orientação). ENISA K.1 e M.1 (guia europeu).",
+    "referencias_tecnicas": "OWASP Authorization Cheat Sheet. Documentação do Spring Security. Documentação de permissões do Django."
+   }
+  },
+  {
+   "id": "ARQ-02",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Gerencie as senhas exigindo senhas fortes, proibindo senha padrão e conta compartilhada e guardando só o hash.",
+   "mecanismo": "política de senha aplicada no cadastro (tamanho mínimo e complexidade) e armazenamento com função de hash própria para senhas e com sal, como Argon2 ou bcrypt.",
+   "variacoes": "quando a autenticação é feita por um provedor de identidade da instituição (SSO ou LDAP), a política e o armazenamento ficam nesse provedor, e a evidência vem da configuração dele.",
+   "itens": [
+    {
+     "id": "ARQ-02.1",
+     "texto": "O sistema impõe complexidade mínima de senha."
+    },
+    {
+     "id": "ARQ-02.2",
+     "texto": "Não há senhas padrão em uso."
+    },
+    {
+     "id": "ARQ-02.3",
+     "texto": "Não há contas compartilhadas."
+    },
+    {
+     "id": "ARQ-02.4",
+     "texto": "As senhas são guardadas apenas como hash."
+    }
+   ],
+   "forma_verificacao": "Código: 1 e 4. Configuração: 2 e 3",
+   "referencias": {
+    "base": "Art. 46 (lei). ANPD 36–38 (orientação). ENISA K.2 a K.6 (guia europeu).",
+    "referencias_tecnicas": "OWASP Password Storage Cheat Sheet. OWASP Authentication Cheat Sheet."
+   }
+  },
+  {
+   "id": "ARQ-03",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Exija autenticação multifator para o acesso a dados pessoais.",
+   "mecanismo": "um segundo fator além da senha, como código temporário (TOTP) ou chave de segurança (WebAuthn).",
+   "variacoes": "o segundo fator pode ser implementado no sistema ou herdado do provedor de identidade da instituição. Nesse segundo caso, a evidência vem da configuração do provedor.",
+   "itens": [
+    {
+     "id": "ARQ-03.1",
+     "texto": "O acesso a dados pessoais exige autenticação multifator."
+    }
+   ],
+   "forma_verificacao": "Código ou Configuração",
+   "referencias": {
+    "base": "Art. 46 (lei). ANPD 41–42 (orientação). ENISA K.7 (guia europeu).",
+    "referencias_tecnicas": "RFC 6238 (TOTP). W3C Web Authentication (WebAuthn). OWASP Multifactor Authentication Cheat Sheet."
+   }
+  },
+  {
+   "id": "ARQ-04",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Cifre toda a comunicação do sistema com TLS.",
+   "mecanismo": "HTTPS com TLS 1.2 ou superior em toda comunicação, com redirecionamento de HTTP para HTTPS e cabeçalho HSTS.",
+   "variacoes": "o TLS pode terminar na aplicação, no servidor web ou num balanceador de carga. A comunicação interna, como a da aplicação com o banco, também é cifrada.",
+   "itens": [
+    {
+     "id": "ARQ-04.1",
+     "texto": "Toda comunicação com o sistema usa TLS."
+    }
+   ],
+   "forma_verificacao": "Configuração",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27701 6.10 e ISO 27002 10.1.1 (c) (norma). ANPD 53 (orientação). ENISA O.1 (guia europeu).",
+    "referencias_tecnicas": "OWASP Transport Layer Security Cheat Sheet. RFC 8446 (TLS 1.3)."
+   }
+  },
+  {
+   "id": "ARQ-05",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Cifre os dados sensíveis quando estiverem armazenados.",
+   "mecanismo": "criptografia simétrica autenticada, como AES-GCM, aplicada aos dados sensíveis identificados na Etapa de Preparação. As chaves seguem o ARQ-07.",
+   "variacoes": "a criptografia pode ficar no campo (feita pela aplicação), no banco (recurso do SGBD) ou no disco. Dados que a instituição classifique como de alto risco, como dados bancários, podem receber o mesmo tratamento.",
+   "itens": [
+    {
+     "id": "ARQ-05.1",
+     "texto": "Os dados sensíveis ficam cifrados no armazenamento."
+    }
+   ],
+   "forma_verificacao": "Banco de dados ou Infraestrutura",
+   "referencias": {
+    "base": "Art. 5º, II e Art. 46 (lei). ISO 27701 6.7 e ISO 27002 10.1.1 (norma). ANPD 46 (orientação). ENISA M.3 e M.4 (guia europeu).",
+    "referencias_tecnicas": "OWASP Cryptographic Storage Cheat Sheet."
+   }
+  },
+  {
+   "id": "ARQ-06",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Separe os identificadores diretos dos demais dados pessoais.",
+   "mecanismo": "pseudonimização. Nome, CPF e e-mail ficam numa estrutura separada, e os demais dados se ligam a eles por um identificador interno sem significado. A correspondência fica em ambiente de acesso restrito.",
+   "variacoes": "a separação pode ser por tabela, por esquema ou por banco. A substituição do identificador por um token também atende.",
+   "itens": [
+    {
+     "id": "ARQ-06.1",
+     "texto": "Os identificadores diretos ficam separados dos demais dados pessoais."
+    }
+   ],
+   "forma_verificacao": "Banco de dados",
+   "referencias": {
+    "base": "Art. 13, §4º, por analogia (lei). ANPD 46 (orientação). ENISA M.5 (guia europeu).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "ARQ-07",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Gerencie as chaves criptográficas fora do código, com acesso restrito, troca e cópia de segurança.",
+   "mecanismo": "cofre de segredos, com as chaves injetadas no ambiente na hora da implantação e nunca gravadas no repositório. Os algoritmos e tamanhos de chave seguem uma referência técnica citada.",
+   "variacoes": "o cofre pode ser o do provedor de nuvem ou um cofre instalado na instituição. Em tratamento de alto risco, as chaves podem ficar num módulo de hardware (HSM).",
+   "itens": [
+    {
+     "id": "ARQ-07.1",
+     "texto": "As chaves não estão no código-fonte nem no repositório."
+    },
+    {
+     "id": "ARQ-07.2",
+     "texto": "O acesso às chaves é restrito a contas ou serviços autorizados."
+    },
+    {
+     "id": "ARQ-07.3",
+     "texto": "Existe procedimento documentado de troca e revogação de chaves, com prazo."
+    },
+    {
+     "id": "ARQ-07.4",
+     "texto": "As chaves têm cópia de segurança separada dos dados que elas cifram."
+    },
+    {
+     "id": "ARQ-07.5",
+     "texto": "As operações sobre chaves ficam registradas."
+    },
+    {
+     "id": "ARQ-07.6",
+     "texto": "Os algoritmos e tamanhos de chave seguem a referência técnica citada."
+    }
+   ],
+   "forma_verificacao": "Repositório: 1. Configuração: 2 e 5. Documento: 3. Infraestrutura: 4. Código: 6",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27002 10.1.2 (norma).",
+    "referencias_tecnicas": "OWASP Key Management Cheat Sheet. OWASP Secrets Management Cheat Sheet. NIST SP 800-131A Rev. 2."
+   }
+  },
+  {
+   "id": "ARQ-08",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Proteja os serviços web com firewall, WAF e detecção de intrusão.",
+   "mecanismo": "firewall de rede liberando só as portas necessárias, firewall de aplicação web (WAF) na frente do sistema e detecção de intrusão ou monitoramento do tráfego.",
+   "variacoes": "os três podem ser serviços do provedor de nuvem ou da equipe de redes da instituição. Nesse caso, a evidência vem dessa equipe ou do provedor.",
+   "itens": [
+    {
+     "id": "ARQ-08.1",
+     "texto": "Um firewall controla o tráfego."
+    },
+    {
+     "id": "ARQ-08.2",
+     "texto": "Há detecção de intrusão ou monitoramento do tráfego."
+    },
+    {
+     "id": "ARQ-08.3",
+     "texto": "Os serviços web usam WAF."
+    }
+   ],
+   "forma_verificacao": "Infraestrutura",
+   "referencias": {
+    "base": "Art. 46 (lei). ANPD 54 (orientação). ENISA O.4 e O.5 (guia europeu).",
+    "referencias_tecnicas": "OWASP Core Rule Set (CRS)."
+   }
+  },
+  {
+   "id": "ARQ-09",
+   "etapa": "Arquitetura",
+   "condicional": true,
+   "aplica_se_quando": "Algum tratamento usa o consentimento como base legal",
+   "diretriz": "Mantenha o consentimento como prova verificável e revogável.",
+   "mecanismo": "registro de cada consentimento com data, titular, finalidade e versão do texto apresentado. A revogação usa o mesmo canal da concessão e interrompe o tratamento que dependia dela.",
+   "variacoes": "a concessão pode ser uma caixa de seleção desmarcada por padrão, um botão ou um fluxo próprio. Para dado sensível, o consentimento é específico e destacado. No setor público, ele só cabe quando o fornecimento do dado não é obrigatório, o que fica definido na Etapa de Preparação.",
+   "itens": [
+    {
+     "id": "ARQ-09.1",
+     "texto": "O consentimento é registrado com data, titular, finalidade e versão do texto."
+    },
+    {
+     "id": "ARQ-09.2",
+     "texto": "O titular é informado de que pode não consentir e das consequências."
+    },
+    {
+     "id": "ARQ-09.3",
+     "texto": "O titular revoga o consentimento pelo mesmo meio em que o deu."
+    },
+    {
+     "id": "ARQ-09.4",
+     "texto": "A revogação interrompe o tratamento que dependia do consentimento."
+    }
+   ],
+   "forma_verificacao": "Código e banco de dados: 1. Código: 2, 3 e 4",
+   "referencias": {
+    "base": "Art. 8º, §§2º e 5º, Art. 11, I, e Art. 18, VIII e IX (lei). ISO 27701 7.2.3, 7.2.4 e 7.3.4 (norma). ANPD Poder Público, p. 10 (orientação).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "ARQ-10",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Ofereça ao titular um meio para consultar, corrigir e receber cópia dos seus dados.",
+   "mecanismo": "área de autoatendimento em que o titular consulta seus dados, pede correção e exporta uma cópia em formato estruturado, como JSON ou CSV. A correção é aplicada em todos os lugares do sistema que guardam o dado.",
+   "variacoes": "sem autoatendimento, a consulta e a correção passam pelo canal do IMP-11, e a evidência é documental. A consulta imediata em formato simplificado atende ao prazo legal. A declaração completa tem até 15 dias.",
+   "itens": [
+    {
+     "id": "ARQ-10.1",
+     "texto": "O titular consegue ver os dados pessoais que o sistema guarda sobre ele."
+    },
+    {
+     "id": "ARQ-10.2",
+     "texto": "O titular consegue pedir correção de dados incompletos, inexatos ou desatualizados."
+    },
+    {
+     "id": "ARQ-10.3",
+     "texto": "As correções são propagadas para todo o sistema."
+    },
+    {
+     "id": "ARQ-10.4",
+     "texto": "A cópia é entregue em formato estruturado e de uso comum."
+    }
+   ],
+   "forma_verificacao": "Código: 1, 3 e 4. Código ou documento: 2",
+   "referencias": {
+    "base": "Art. 18, I, II e III, e Art. 19 (lei). ISO 27701 7.3.6 e 7.3.8 (norma).",
+    "referencias_tecnicas": "RFC 8259 (JSON). RFC 4180 (CSV)."
+   }
+  },
+  {
+   "id": "ARQ-11",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Permita que o titular peça a anonimização, o bloqueio ou a eliminação de dados desnecessários, excessivos ou irregulares, e a eliminação dos dados tratados com consentimento.",
+   "mecanismo": "fluxo de pedido que localiza o dado em todas as cópias do sistema (tabelas, arquivos e caches) e aplica a ação pedida.",
+   "variacoes": "o pedido pode ser feito na interface ou pelo canal do IMP-11. Quando a lei obriga a guarda do dado, ele é mantido ou bloqueado, e o titular recebe a razão pelo IMP-11. Sem tratamento baseado em consentimento, o item 2 recebe “Não se aplica”.",
+   "itens": [
+    {
+     "id": "ARQ-11.1",
+     "texto": "O titular pode pedir anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou irregulares."
+    },
+    {
+     "id": "ARQ-11.2",
+     "texto": "O titular pode pedir a eliminação dos dados tratados com consentimento."
+    },
+    {
+     "id": "ARQ-11.3",
+     "texto": "A eliminação atinge todas as cópias do dado no sistema."
+    }
+   ],
+   "forma_verificacao": "Código ou documento: 1 e 2. Código: 3",
+   "referencias": {
+    "base": "Art. 16 e Art. 18, IV e VI (lei). ISO 27701 7.3.6 (norma).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "ARQ-12",
+   "etapa": "Arquitetura",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Informe o titular sobre o tratamento no momento da coleta e mantenha essa informação acessível.",
+   "mecanismo": "aviso de privacidade em camadas, com um resumo na tela de coleta e o texto completo num link permanente. O aviso traz finalidade específica, base legal, prazo de retenção e direitos do titular.",
+   "variacoes": "o aviso pode ser um texto na tela, um link visível ou uma mensagem no momento do uso. No setor público, o órgão também publica as hipóteses em que trata dados, de preferência no próprio site.",
+   "itens": [
+    {
+     "id": "ARQ-12.1",
+     "texto": "Na coleta, a interface mostra finalidade, base legal, prazo de retenção e direitos."
+    },
+    {
+     "id": "ARQ-12.2",
+     "texto": "Cada finalidade exibida é específica, e não genérica."
+    },
+    {
+     "id": "ARQ-12.3",
+     "texto": "O aviso de privacidade fica acessível a qualquer momento no sistema."
+    },
+    {
+     "id": "ARQ-12.4",
+     "texto": "O aviso informa que os dados de acesso são registrados para segurança."
+    },
+    {
+     "id": "ARQ-12.5",
+     "texto": "O aviso é atualizado quando uma finalidade muda."
+    }
+   ],
+   "forma_verificacao": "Código: 1 a 3. Documento: 4 e 5",
+   "referencias": {
+    "base": "Art. 6º, VI, Art. 9º e Art. 23, I (lei). ISO 27701 7.3.2 e 7.3.3 (norma). ANPD Poder Público, ex. 1 e ex. 3 (orientação).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "ARQ-13",
+   "etapa": "Arquitetura",
+   "condicional": true,
+   "aplica_se_quando": "Há decisão tomada só por tratamento automatizado que afete o titular",
+   "diretriz": "Permita que o titular peça a revisão de decisões tomadas só por tratamento automatizado.",
+   "mecanismo": "junto ao resultado, um aviso de que a decisão foi automatizada, com a opção de pedir revisão e de consultar os critérios usados.",
+   "variacoes": "a revisão pode ser feita por uma área designada ou pelo encarregado. Os critérios podem aparecer na interface ou ser enviados quando o titular pedir.",
+   "itens": [
+    {
+     "id": "ARQ-13.1",
+     "texto": "O sistema informa ao titular quando uma decisão sobre ele é automatizada."
+    },
+    {
+     "id": "ARQ-13.2",
+     "texto": "O titular pode pedir a revisão da decisão."
+    },
+    {
+     "id": "ARQ-13.3",
+     "texto": "O titular pode obter os critérios usados na decisão."
+    }
+   ],
+   "forma_verificacao": "Código: 1 e 2. Código ou documento: 3",
+   "referencias": {
+    "base": "Art. 20, caput e §1º (lei). ISO 27701 7.3.10 (norma).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "IMP-01",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Valide no servidor toda entrada de dados.",
+   "mecanismo": "validação por lista de permissões. O servidor confere tipo, tamanho, formato e intervalo de cada campo antes de qualquer uso. Pode-se usar o recurso de validação do framework, como o Jakarta Validation em Java ou os validadores do Django em Python.",
+   "variacoes": "a validação no navegador melhora a experiência do usuário, mas não substitui a do servidor. Em integrações, a validação segue o contrato da API.",
+   "itens": [
+    {
+     "id": "IMP-01.1",
+     "texto": "Toda entrada de dados é validada no servidor."
+    }
+   ],
+   "forma_verificacao": "Código",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27701 6.11.2 (norma). ENISA R.4 (guia europeu).",
+    "referencias_tecnicas": "OWASP Input Validation Cheat Sheet. Jakarta Validation. Documentação de validadores do Django."
+   }
+  },
+  {
+   "id": "IMP-02",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Teste os requisitos de segurança antes de levar o sistema para produção.",
+   "mecanismo": "testes automatizados para cada requisito de segurança do REQ-01, como “acesso negado sem permissão” e “senha fraca recusada”, executados antes de cada implantação.",
+   "variacoes": "os testes podem ser unitários, de integração ou de ponta a ponta. Podem rodar numa esteira de integração contínua ou ser executados manualmente com registro.",
+   "itens": [
+    {
+     "id": "IMP-02.1",
+     "texto": "Os requisitos de segurança têm testes que rodam antes da produção."
+    }
+   ],
+   "forma_verificacao": "Repositório",
+   "referencias": {
+    "base": "Art. 46 (lei). ENISA R.5 (guia europeu).",
+    "referencias_tecnicas": "OWASP Web Security Testing Guide (WSTG)."
+   }
+  },
+  {
+   "id": "IMP-03",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Use nos testes dados que não sejam dados pessoais reais.",
+   "mecanismo": "dados sintéticos, gerados por bibliotecas como Faker (Python) ou Datafaker (Java), ou dados de produção anonimizados antes de chegar ao ambiente de teste.",
+   "variacoes": "quando o uso de dado real for inevitável, ele precisa de autorização e recebe as mesmas proteções da produção, e é apagado ao fim do teste.",
+   "itens": [
+    {
+     "id": "IMP-03.1",
+     "texto": "Os ambientes de teste não contêm dados pessoais reais."
+    }
+   ],
+   "forma_verificacao": "Configuração e Banco de dados",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27701 6.11.3.1 (norma).",
+    "referencias_tecnicas": "documentação do Faker. Documentação do Datafaker."
+   }
+  },
+  {
+   "id": "IMP-04",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Registre os acessos e as alterações em dados pessoais e as ações dos administradores.",
+   "mecanismo": "trilha de auditoria com quem acessou, quando, de qual titular, qual operação e o que mudou. As ações administrativas também são registradas. Os relógios seguem uma fonte única, por NTP, e os registros são analisados periodicamente ou por alertas.",
+   "variacoes": "a trilha pode ficar numa tabela de auditoria no banco ou num serviço central de logs. O registro guarda só o necessário para a auditoria, sem coletar dados além dela.",
+   "itens": [
+    {
+     "id": "IMP-04.1",
+     "texto": "O log grava quem acessou, quando, de qual titular e o que mudou."
+    },
+    {
+     "id": "IMP-04.2",
+     "texto": "As ações de administradores, inclusive mudança de permissões, são registradas."
+    },
+    {
+     "id": "IMP-04.3",
+     "texto": "Os relógios dos servidores estão sincronizados com uma fonte única."
+    },
+    {
+     "id": "IMP-04.4",
+     "texto": "Os logs são analisados com periodicidade documentada ou por alertas automáticos."
+    }
+   ],
+   "forma_verificacao": "Código e banco de dados: 1. Configuração: 2 e 3. Documento ou configuração: 4",
+   "referencias": {
+    "base": "Art. 37 e Art. 46 (lei). ISO 27701 6.9.4.1, 6.9.4.3 e 6.9.4.4 (norma). ANPD 34 e ANPD Poder Público, ex. 3 (orientação). ENISA L.1, L.2, L.3 e L.5 (guia europeu).",
+    "referencias_tecnicas": "OWASP Logging Cheat Sheet. RFC 5905 (NTP versão 4)."
+   }
+  },
+  {
+   "id": "IMP-05",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Proteja os logs contra acesso, alteração e exclusão indevidos e elimine-os no prazo de retenção.",
+   "mecanismo": "logs em local de acesso restrito, em modo que só aceita acréscimo, com registro de quem os consulta e com rotina automática que os exclui ou anonimiza no prazo definido no REQ-03.",
+   "variacoes": "os logs podem ficar num serviço central com retenção configurada ou num armazenamento que impede alteração depois de gravado.",
+   "itens": [
+    {
+     "id": "IMP-05.1",
+     "texto": "O acesso aos logs é restrito a quem precisa."
+    },
+    {
+     "id": "IMP-05.2",
+     "texto": "O conteúdo dos logs não pode ser alterado nem apagado fora do procedimento de retenção."
+    },
+    {
+     "id": "IMP-05.3",
+     "texto": "O acesso aos próprios logs é registrado."
+    },
+    {
+     "id": "IMP-05.4",
+     "texto": "Os logs são excluídos ou anonimizados automaticamente no prazo de retenção."
+    }
+   ],
+   "forma_verificacao": "Configuração: 1, 3 e 4. Configuração ou infraestrutura: 2",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27701 6.9.4.2 (norma). ENISA L.2 e L.4 (guia europeu).",
+    "referencias_tecnicas": "OWASP Logging Cheat Sheet."
+   }
+  },
+  {
+   "id": "IMP-06",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Mantenha atualizadas as dependências da aplicação e o sistema operacional dos servidores.",
+   "mecanismo": "manifesto de dependências com versões fixadas, análise de composição contínua que avisa sobre vulnerabilidades conhecidas e rotina de correções de segurança nos servidores.",
+   "variacoes": "a análise pode usar ferramentas como OWASP Dependency-Check ou Dependabot. As correções do sistema operacional podem ficar com a equipe de infraestrutura, e nesse caso a evidência vem dela.",
+   "itens": [
+    {
+     "id": "IMP-06.1",
+     "texto": "As dependências da aplicação estão atualizadas e monitoradas quanto a vulnerabilidades."
+    },
+    {
+     "id": "IMP-06.2",
+     "texto": "Servidores e sistema operacional recebem correções de segurança."
+    }
+   ],
+   "forma_verificacao": "Repositório: 1. Infraestrutura: 2",
+   "referencias": {
+    "base": "Art. 46 (lei). ANPD 56 (orientação). ENISA R.8 e R.9 (guia europeu).",
+    "referencias_tecnicas": "OWASP Dependency-Check. OWASP Vulnerable Dependency Management Cheat Sheet."
+   }
+  },
+  {
+   "id": "IMP-07",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Faça teste de segurança antes de colocar o sistema em produção e repita-o periodicamente.",
+   "mecanismo": "teste de segurança da aplicação em execução (varredura de vulnerabilidades ou teste de intrusão), com relatório dos achados e registro das correções.",
+   "variacoes": "o teste pode usar uma ferramenta de varredura dinâmica, como o ZAP, ou ser feito à mão por uma equipe interna ou externa. A periodicidade é definida pela instituição.",
+   "itens": [
+    {
+     "id": "IMP-07.1",
+     "texto": "Há teste de segurança antes de entrar em produção."
+    },
+    {
+     "id": "IMP-07.2",
+     "texto": "Há teste de segurança periódico."
+    }
+   ],
+   "forma_verificacao": "Documento",
+   "referencias": {
+    "base": "Art. 46 (lei). ENISA R.6 e R.7 (guia europeu).",
+    "referencias_tecnicas": "OWASP Web Security Testing Guide (WSTG). Documentação do ZAP."
+   }
+  },
+  {
+   "id": "IMP-08",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Faça backup regular e cifrado, com uma cópia isolada e teste de restauração.",
+   "mecanismo": "cópias completas e periódicas, com pelo menos uma cópia isolada do armazenamento principal (desconectada ou imutável) e sem sincronização em tempo real. As cópias são cifradas, e as chaves seguem o ARQ-07. A restauração é testada e registrada.",
+   "variacoes": "o backup pode ser feito pelo provedor de nuvem ou pela equipe de infraestrutura da instituição. Nesse caso, a evidência vem dessa equipe ou do provedor.",
+   "itens": [
+    {
+     "id": "IMP-08.1",
+     "texto": "Os backups são completos e regulares."
+    },
+    {
+     "id": "IMP-08.2",
+     "texto": "Há cópia isolada do armazenamento principal, sem sincronização em tempo real."
+    },
+    {
+     "id": "IMP-08.3",
+     "texto": "A restauração é testada."
+    },
+    {
+     "id": "IMP-08.4",
+     "texto": "Os backups são cifrados."
+    }
+   ],
+   "forma_verificacao": "Infraestrutura: 1, 2 e 4. Documento: 3",
+   "referencias": {
+    "base": "Art. 46 (lei). ISO 27701 6.9.3 (norma). ANPD 49 (orientação). ENISA P.1, P.4, P.5, P.7, P.8 e P.9 (guia europeu).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "IMP-09",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Elimine ou anonimize os dados quando o prazo de retenção vencer ou a finalidade terminar.",
+   "mecanismo": "rotina agendada que segue a tabela de retenção do REQ-03 e elimina ou anonimiza os registros vencidos, inclusive arquivos temporários.",
+   "variacoes": "quando a lei obriga a guarda, o dado é mantido com a justificativa registrada no REQ-03. Mídias descartadas são sobrescritas ou destruídas.",
+   "itens": [
+    {
+     "id": "IMP-09.1",
+     "texto": "Rotina automática elimina ou anonimiza os dados ao fim do prazo."
+    },
+    {
+     "id": "IMP-09.2",
+     "texto": "Após a rotina, os dados não são recuperáveis no banco da aplicação."
+    },
+    {
+     "id": "IMP-09.3",
+     "texto": "Arquivos temporários com dado pessoal são excluídos em prazo documentado."
+    }
+   ],
+   "forma_verificacao": "Código: 1. Banco de dados: 2. Código ou configuração: 3",
+   "referencias": {
+    "base": "Art. 15 e Art. 16 (lei). ISO 27701 7.4.5, 7.4.6 e 7.4.8 (norma). ANPD 50 (orientação). ENISA S.1 (guia europeu).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "IMP-10",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Não exponha dados pessoais em páginas, mensagens ou endpoints públicos.",
+   "mecanismo": "toda rota que devolve dado pessoal exige autenticação e a autorização do ARQ-01. As respostas da API trazem só os campos necessários. Páginas públicas, mensagens de erro e endereços não mostram dados pessoais.",
+   "variacoes": "no setor público, os dados publicados por obrigação de transparência seguem a norma que manda publicá-los e ficam fora deste item.",
+   "itens": [
+    {
+     "id": "IMP-10.1",
+     "texto": "Nenhuma página ou endpoint público expõe dado pessoal."
+    }
+   ],
+   "forma_verificacao": "Código",
+   "referencias": {
+    "base": "Art. 46 (lei). ANPD 55 (orientação).",
+    "referencias_tecnicas": "OWASP API Security Top 10 (2023)."
+   }
+  },
+  {
+   "id": "IMP-11",
+   "etapa": "Implementação",
+   "condicional": false,
+   "aplica_se_quando": "",
+   "diretriz": "Informe o contato do encarregado e atenda os pedidos do titular em prazo definido.",
+   "mecanismo": "link visível no sistema para o contato do encarregado e para o canal de pedidos, apoiado num procedimento documentado. O procedimento diz quais pedidos são aceitos, o prazo de resposta, a resposta com as razões quando não for possível atender na hora e a gratuidade.",
+   "variacoes": "o canal pode ser um formulário no próprio sistema, um e-mail ou a ouvidoria, desde que use o mesmo meio da coleta. No setor público, o encarregado é indicado pelo órgão.",
+   "itens": [
+    {
+     "id": "IMP-11.1",
+     "texto": "O sistema informa o contato do encarregado ou leva até ele."
+    },
+    {
+     "id": "IMP-11.2",
+     "texto": "O canal usa o mesmo meio da coleta."
+    },
+    {
+     "id": "IMP-11.3",
+     "texto": "O canal aceita pedidos de acesso, correção, exclusão e oposição, e reclamações."
+    },
+    {
+     "id": "IMP-11.4",
+     "texto": "O prazo de resposta está definido e publicado."
+    },
+    {
+     "id": "IMP-11.5",
+     "texto": "Quando o pedido não pode ser atendido de imediato, a resposta indica as razões."
+    },
+    {
+     "id": "IMP-11.6",
+     "texto": "O atendimento é gratuito."
+    }
+   ],
+   "forma_verificacao": "Código ou configuração: 1 e 2. Documento: 3, 4, 5 e 6",
+   "referencias": {
+    "base": "Art. 18, §§2º a 5º, Art. 19, Art. 23, III, e Art. 41, §1º (lei). ISO 27701 7.3.1 e 7.3.9 (norma).",
+    "referencias_tecnicas": "não se aplica."
+   }
+  },
+  {
+   "id": "IMP-12",
+   "etapa": "Implementação",
+   "condicional": true,
+   "aplica_se_quando": "O sistema envia dados pessoais a outro órgão ou entidade",
+   "diretriz": "Registre e limite cada compartilhamento de dados pessoais com terceiros.",
+   "mecanismo": "registro de cada envio (qual dado, para quem e quando) e integração que envia só os campos previstos no instrumento de compartilhamento. A credencial do destinatário vale apenas pelo prazo acordado. Correções e eliminações são avisadas aos destinatários, e o titular pode consultar com quem seus dados foram compartilhados.",
+   "variacoes": "a credencial com prazo pode usar um protocolo de autorização, como o OAuth 2.0. No setor público, o compartilhamento é formalizado em convênio, contrato ou ato administrativo, que define dados, finalidade, base legal e prazo. Essa formalização é da instituição, e o guia verifica a parte técnica.",
+   "itens": [
+    {
+     "id": "IMP-12.1",
+     "texto": "Cada compartilhamento registra qual dado, para quem e quando."
+    },
+    {
+     "id": "IMP-12.2",
+     "texto": "A integração envia apenas os campos previstos no instrumento de compartilhamento."
+    },
+    {
+     "id": "IMP-12.3",
+     "texto": "O acesso do destinatário termina no fim do prazo do compartilhamento."
+    },
+    {
+     "id": "IMP-12.4",
+     "texto": "Correções e eliminações são comunicadas aos destinatários."
+    },
+    {
+     "id": "IMP-12.5",
+     "texto": "O titular pode saber com quais entidades seus dados foram compartilhados."
+    }
+   ],
+   "forma_verificacao": "Banco de dados ou documento: 1. Código: 2. Configuração: 3. Código ou documento: 4 e 5",
+   "referencias": {
+    "base": "Art. 18, VII e §6º, Art. 26 e Art. 37 (lei). ISO 27701 7.3.7 e 7.5.4 (norma). ANPD Poder Público, pp. 29–36 (orientação).",
+    "referencias_tecnicas": "RFC 6749 (OAuth 2.0)."
+   }
+  },
+  {
+   "id": "NUV-01",
+   "etapa": "Nuvem",
+   "condicional": true,
+   "aplica_se_quando": "O sistema roda ou guarda dados em serviço de nuvem",
+   "diretriz": "Exija do provedor de nuvem garantias de segurança, controle de acesso e autenticação multifator.",
+   "mecanismo": "contrato com acordo de nível de serviço que trata da segurança dos dados, avaliação do provedor antes da contratação, especificação de quem acessa os serviços e autenticação multifator nas contas do provedor.",
+   "variacoes": "vale para nuvem pública, privada ou de governo. As certificações do provedor, como ISO/IEC 27017 e ISO/IEC 27018, podem servir de evidência da avaliação.",
+   "itens": [
+    {
+     "id": "NUV-01.1",
+     "texto": "Há acordo de nível de serviço que trata da segurança dos dados."
+    },
+    {
+     "id": "NUV-01.2",
+     "texto": "O provedor foi avaliado frente aos requisitos de segurança."
+    },
+    {
+     "id": "NUV-01.3",
+     "texto": "Os requisitos de acesso aos serviços de nuvem estão especificados."
+    },
+    {
+     "id": "NUV-01.4",
+     "texto": "As contas dos serviços de nuvem usam autenticação multifator."
+    }
+   ],
+   "forma_verificacao": "Documento: 1 (contrato) e 2. Configuração: 3 e 4",
+   "referencias": {
+    "base": "Art. 46 (lei). ANPD 66–68 (orientação).",
+    "referencias_tecnicas": "ISO/IEC 27017. ISO/IEC 27018."
+   }
+  }
+ ]
+}

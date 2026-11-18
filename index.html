@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Prático de Diretrizes da LGPD para Desenvolvedores</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<div class="layout">
+<aside class="indice" id="indice">
+<p class="indice-titulo"><a href="index.html">Guia Prático de Diretrizes da LGPD para Desenvolvedores</a></p>
+<nav aria-label="Índice"><p class="indice-cab">Índice</p>
+<ol><li><a href="index.html#apresentacao">1. Apresentação</a></li><li><a href="index.html#como-usar">2. Como Usar</a><ol><li><a href="index.html#ordem-de-uso">2.1 Ordem de uso</a></li><li><a href="index.html#como-ler">2.2 Como ler uma ficha</a></li><li><a href="index.html#formas">2.3 Formas de verificação</a></li><li><a href="index.html#condicionais">2.4 Diretrizes condicionais</a></li></ol></li><li><a href="preparacao.html">3. Etapa de Preparação</a></li><li><a href="fichas.html">4. Fichas de Diretrizes</a><details class="ids-det"><summary>Fichas por ID</summary><ul><li class="grupo-et"><span>Requisitos</span><ul class="ids"><li><a href="fichas.html#REQ-01">REQ-01</a></li><li><a href="fichas.html#REQ-02">REQ-02</a></li><li><a href="fichas.html#REQ-03">REQ-03</a></li><li><a href="fichas.html#REQ-04">REQ-04</a></li></ul></li><li class="grupo-et"><span>Arquitetura</span><ul class="ids"><li><a href="fichas.html#ARQ-01">ARQ-01</a></li><li><a href="fichas.html#ARQ-02">ARQ-02</a></li><li><a href="fichas.html#ARQ-03">ARQ-03</a></li><li><a href="fichas.html#ARQ-04">ARQ-04</a></li><li><a href="fichas.html#ARQ-05">ARQ-05</a></li><li><a href="fichas.html#ARQ-06">ARQ-06</a></li><li><a href="fichas.html#ARQ-07">ARQ-07</a></li><li><a href="fichas.html#ARQ-08">ARQ-08</a></li><li><a href="fichas.html#ARQ-09">ARQ-09</a></li><li><a href="fichas.html#ARQ-10">ARQ-10</a></li><li><a href="fichas.html#ARQ-11">ARQ-11</a></li><li><a href="fichas.html#ARQ-12">ARQ-12</a></li><li><a href="fichas.html#ARQ-13">ARQ-13</a></li></ul></li><li class="grupo-et"><span>Implementação</span><ul class="ids"><li><a href="fichas.html#IMP-01">IMP-01</a></li><li><a href="fichas.html#IMP-02">IMP-02</a></li><li><a href="fichas.html#IMP-03">IMP-03</a></li><li><a href="fichas.html#IMP-04">IMP-04</a></li><li><a href="fichas.html#IMP-05">IMP-05</a></li><li><a href="fichas.html#IMP-06">IMP-06</a></li><li><a href="fichas.html#IMP-07">IMP-07</a></li><li><a href="fichas.html#IMP-08">IMP-08</a></li><li><a href="fichas.html#IMP-09">IMP-09</a></li><li><a href="fichas.html#IMP-10">IMP-10</a></li><li><a href="fichas.html#IMP-11">IMP-11</a></li><li><a href="fichas.html#IMP-12">IMP-12</a></li></ul></li><li class="grupo-et"><span>Nuvem</span><ul class="ids"><li><a href="fichas.html#NUV-01">NUV-01</a></li></ul></li></ul></details></li><li><a href="checklist.html">Checklist</a></li><li><a href="fontes.html">6. Fontes e Limites</a><ol><li><a href="fontes.html#fontes">6.1 Fontes</a></li><li><a href="fontes.html#limites">6.2 Limites</a></li></ol></li><li><a href="referencias.html">7. Referências</a></li></ol>
+</nav>
+</aside>
+<div class="coluna">
+<button type="button" class="indice-botao" id="indice-botao" aria-controls="indice" aria-expanded="false" hidden>Índice</button>
+<main id="conteudo">
+<h1>Guia Prático de Diretrizes da LGPD para Desenvolvedores</h1>
+<section aria-labelledby="apresentacao"><h2 id="apresentacao">1. Apresentação</h2>
+<p>Este guia ajuda desenvolvedores a implementar e verificar, em sistemas de informação, as medidas técnicas de segurança e de privacidade relacionadas à Lei Geral de Proteção de Dados Pessoais (LGPD).</p>
+<p>A LGPD define o resultado esperado, mas não lista as medidas. O Art. 46 exige medidas de segurança, técnicas e administrativas, aptas a proteger os dados pessoais, e o §2º do mesmo artigo exige que elas sejam observadas desde a concepção do produto ou serviço. O Art. 49 determina que os sistemas sejam estruturados para atender aos requisitos de segurança e aos princípios da lei. A lei prevê que a ANPD defina padrões técnicos mínimos (Art. 46, §1º), mas, até outubro de 2026, essa regulamentação ainda estava em elaboração. Na prática, cabe a cada equipe decidir como transformar essas exigências em requisitos, decisões de arquitetura e código. O guia organiza essa transformação em 30 diretrizes, agrupadas pelas etapas do desenvolvimento: requisitos (REQ), arquitetura (ARQ) e implementação (IMP), além de uma diretriz para sistemas em nuvem (NUV). Cada diretriz é apresentada numa ficha, que diz o que fazer, como fazer e como verificar se foi feito. Cada ficha aponta as fontes em que se apoia: a própria lei, normas técnicas, orientações da ANPD e guias de boas práticas. O público do guia são desenvolvedores e equipes de sistemas. Não é preciso formação jurídica para usá-lo. As decisões que dependem de interpretação da lei, como a escolha da base legal ou a definição dos prazos de retenção, são tomadas pela instituição responsável pelo tratamento. O guia verifica se essas decisões existem, estão registradas e são cumpridas pelo sistema. O guia vale para sistemas do setor público e do setor privado. Quando o contexto muda a forma de atender uma diretriz, a ficha indica isso no campo “Variações de contexto”. O guia trata da camada técnica do sistema. Essa camada é necessária, mas não suficiente, para a adequação de uma instituição à LGPD. Governança, políticas institucionais e outras obrigações do controlador estão fora do seu alcance, como explica a seção “Fontes e limites”.</p>
+</section>
+<section aria-labelledby="como-usar"><h2 id="como-usar">2. Como Usar</h2>
+<h3 id="ordem-de-uso">2.1 Ordem de uso</h3>
+<ol><li><strong>Etapa de Preparação.</strong> Antes de tudo, reúna as informações de que as fichas dependem: o recorte avaliado, os dados pessoais tratados, as respostas às condições e o que vem pronto da instituição.</li><li><strong>Fichas.</strong> Leia as fichas na ordem das etapas (REQ, ARQ, IMP e NUV) e aplique as diretrizes ao sistema.</li></ol>
+<h3 id="como-ler">2.2 Como ler uma ficha</h3>
+<p>Cada ficha tem cinco campos:</p>
+<ul><li><strong>ID:</strong> etapa e número da diretriz, exemplo ARQ-04.</li><li><strong>Diretriz:</strong> o que deve ser feito, numa frase.</li><li><strong>Como:</strong> o mecanismo ou padrão recomendado e as variações de contexto.</li><li><strong>Como verificar:</strong> os itens que confirmam que a diretriz foi atendida.</li><li><strong>Forma de verificação:</strong> onde está a evidência. Quando a ficha tem mais de um item, os números indicam a quais itens cada forma se aplica.</li></ul>
+<p>As fontes de cada ficha ficam numa Tabela de Referências, com a base (lei, norma, orientação e guias) e as referências técnicas. As variações de contexto mudam o mecanismo, nunca o resultado exigido. Qualquer que seja a variação adotada, a diretriz só é atendida se todos os itens de “Como verificar” forem atendidos.</p>
+<h3 id="formas">2.3 Formas de verificação</h3>
+<p>A forma de verificação diz onde procurar a evidência. São seis formas: código, repositório, banco de dados, configuração, infraestrutura e documento. A tabela de formas apresenta cada uma.</p>
+<table><caption class="so-leitor">Formas de verificação</caption><thead><tr><th scope="col">Forma</th><th scope="col">Onde está a evidência</th></tr></thead><tbody><tr><th scope="row">Código</th><td>No código-fonte do sistema</td></tr><tr><th scope="row">Repositório</th><td>Em outros arquivos versionados: testes, manifesto de dependências, histórico</td></tr><tr><th scope="row">Banco de dados</th><td>No esquema ou no conteúdo do banco</td></tr><tr><th scope="row">Configuração</th><td>Nas configurações do sistema, do servidor ou dos serviços usados</td></tr><tr><th scope="row">Infraestrutura</th><td>Na rede, nos servidores ou no armazenamento</td></tr><tr><th scope="row">Documento</th><td>Em registro escrito fora do sistema: do projeto (requisitos, relatórios), da operação (procedimentos, registros de revisão) ou da instituição (registro de tratamento, tabela de retenção, aviso de privacidade ou contratos)</td></tr></tbody></table>
+<p>O tipo do “Documento” indica a quem pedir a evidência: à equipe do projeto, a quem opera o sistema ou à instituição (encarregado ou gestão). Os documentos da instituição são os que a Etapa de Preparação reúne no passo 4.</p>
+<h3 id="condicionais">2.4 Diretrizes condicionais</h3>
+<p>Quatro diretrizes só se aplicam em certas situações e levam “(condicional)” no ID. As demais diretrizes se aplicam sempre. A resposta às condições saí do passo 3 da Etapa de Preparação.</p>
+<table><caption class="so-leitor">Diretrizes condicionais</caption><thead><tr><th scope="col">Diretriz</th><th scope="col">Aplica-se quando</th></tr></thead><tbody><tr><th scope="row"><a href="fichas.html#ARQ-09">ARQ-09</a></th><td>Algum tratamento usa o consentimento como base legal</td></tr><tr><th scope="row"><a href="fichas.html#ARQ-13">ARQ-13</a></th><td>Há decisão tomada só por tratamento automatizado que afete o titular</td></tr><tr><th scope="row"><a href="fichas.html#IMP-12">IMP-12</a></th><td>O sistema envia dados pessoais a outro órgão ou entidade</td></tr><tr><th scope="row"><a href="fichas.html#NUV-01">NUV-01</a></th><td>O sistema roda ou guarda dados em serviço de nuvem</td></tr></tbody></table>
+</section>
+</main>
+<footer class="rodape">
+<p>Versão avaliada no TCC (texto de 28/10/2026)</p>
+<p>Autor: Antonio Vinícius</p>
+</footer>
+</div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>
