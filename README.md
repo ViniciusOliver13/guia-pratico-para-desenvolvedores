@@ -1,6 +1,6 @@
 # Guia Prático de Diretrizes da LGPD para Desenvolvedores
 
-**Site:** 
+**Site:*https://viniciusoliver13.github.io/guia-pratico-para-desenvolvedores/* 
 
 Guia para equipes de desenvolvimento aplicarem a Lei Geral de Proteção de Dados Pessoais (LGPD) nas etapas de requisitos, arquitetura e implementação de sistemas de informação. São 30 fichas de diretrizes e um *checklist* de 89 itens. Cada item indica onde procurar a evidência de atendimento: no código, no repositório, no banco de dados, na configuração, na infraestrutura ou em um documento.
 
